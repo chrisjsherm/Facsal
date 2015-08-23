@@ -1,0 +1,28 @@
+.table-container{
+    overflow: auto;
+}
+
+table {
+    border-collapse: separate; 
+    width: 100%;
+
+    thead, .thead { 
+        background-color: $maroon;
+
+        tr {
+            th, td {
+                color: $body-font-color;
+            }
+        }
+    }
+
+    tbody.department-heading {
+        background-color: $content-elements-bg;
+
+        tr {
+            td {
+                color: $body-font-color;
+            }
+        }
+    }
+}

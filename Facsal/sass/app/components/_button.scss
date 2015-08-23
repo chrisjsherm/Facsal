@@ -1,0 +1,16 @@
+.save-button {
+	border: emCalc(2px) solid $primary-color;
+	color: $primary-color;
+	font-size: 1.25em;
+	margin-top: emCalc(5px);
+    padding: emCalc(5px) 1rem;
+    cursor: pointer;
+}
+
+.cancel-button {
+    @extend .save-button;
+
+    border-color: $alert-color;
+	color: $alert-color;
+    margin-left: emCalc(15px);
+}

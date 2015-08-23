@@ -1,0 +1,82 @@
+﻿<div class="row">
+    <div class="large-12 columns">
+        <h2 class="background"><span>SALARIES</span></h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="large-6 medium-6 columns">
+        <label>
+            Department
+        </label>
+        <select data-bind="value: selectedDepartmentId">
+            <!-- ko foreach: units -->
+            <optgroup data-bind="attr: { label: name }, foreach: departments">
+                <option data-bind="attr: { label: name, value: id }, text: name"></option>
+            </optgroup>
+            <!--/ko-->
+        </select>
+    </div>
+
+    <div class="large-2 large-offset-4 medium-2 medium-offset-2 hide-for-small columns">
+        <label>
+            Faculty status
+        </label>
+        <select data-bind="options: statusTypes,
+            optionsValue: 'id', optionsText: 'name', value: selectedStatusTypeId"></select>
+    </div>
+</div>
+
+<div class="row" data-bind="if: salaries().length > 0">
+    <div class="large-12 columns table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        Name
+                    </th>
+                    <th class="hide-for-small-down">
+                        Rank
+                    </th>
+                    <th class="hide-for-small-down">
+                        Salary
+                    </th>
+                    <th class="hide-for-small-down">
+                        Merit
+                    </th>
+                    <th class="hide-for-small-down">
+                        Special
+                    </th>
+                    <th>
+                        Total
+                    </th>
+                    <th>
+                        Change
+                    </th>
+                </tr>
+            </thead>
+
+            <tbody data-bind="foreach: salaries">
+                <tr>
+                    <td>
+                        <a data-bind="attr: { href: 'salaries/edit/' + id() }, text: person().firstName() + ' ' + person().lastName()"></a>
+                    </td>
+                    <td class="hide-for-small-down" data-bind="text: rankType().name"></td>
+                    <td class="hide-for-small-down" data-bind="text: formattedTotalAmount"></td>
+                    <td class="hide-for-small-down" data-bind="text: formattedMeritIncrease"></td>
+                    <td class="hide-for-small-down" data-bind="text: formattedSpecialIncrease"></td>
+                    <td data-bind="text: formattedNewTotalAmount"></td>
+                    <td data-bind="text: formattedPercentIncrease"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="row" data-bind="if: salaries().length === 0">
+    <div class="large-12 columns">
+        <p>
+            No records
+        </p>
+    </div>
+</div>

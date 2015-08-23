@@ -1,0 +1,41 @@
+﻿<div class="row">
+    <div class="large-12 columns">
+        <h2 class="background"><span>UNREVIEWED SALARY REPORT</span></h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="large-12 columns table-container">
+        <table data-bind="if: departmentData().length > 0">
+            <!-- ko foreach: departmentData -->
+            <tbody class="department-heading">
+                <tr>
+                    <td class="text-center" data-bind="text: department.name"></td>
+                </tr>
+            </tbody>
+
+            <tbody data-bind="if: salaries.length === 0">
+                <tr>
+                    <td>
+                        No records
+                    </td>
+                </tr>
+            </tbody>
+
+            <tbody class="thead" data-bind="if: salaries.length > 0">
+                <tr>
+                    <td>Name</td>
+                </tr>
+            </tbody>
+
+            <tbody data-bind="foreach: salaries">
+                <tr>
+                    <td>
+                        <a data-bind="attr: { href: 'salaries/edit/' + id() }, text: person().firstName() + ' ' + person().lastName()"></a>
+                    </td>
+                </tr>
+            </tbody>
+            <!--/ko-->
+        </table>
+    </div>
+</div>

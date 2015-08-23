@@ -1,0 +1,56 @@
+﻿<div class="row">
+    <div class="large-12 columns">
+        <h2 class="background"><span>EDIT USER</span></h2>
+    </div>
+</div>
+
+<section data-bind="with: user">
+    <div class="row">
+        <div class="large-12 columns">
+            <fieldset>
+                <h4>User information</h4>
+
+                <div class="row">
+                    <div class="large-5 columns end">
+                        <span data-bind="text: 'Pid: ' + pid()"></span>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <h4>Departmental roles</h4>
+
+                <div class="row">
+                    <div class="large-6 medium-8 columns end">
+                        <label>
+                            Department
+                        </label>
+                        <select data-bind="foreach: $parent.units, value: $parent.selectedDepartmentId">
+                            <optgroup data-bind="attr: { label: name }, foreach: departments">
+                                <option data-bind="attr: { label: name, value: id }, text: name"></option>
+                            </optgroup>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- ko foreach: $parent.assignmentVMRows -->
+                <div class="row" data-bind="foreach: $data">
+                    <div class="large-3 columns end">
+                        <label>
+                            <input type="checkbox" data-bind="checkedValue: role, checked: isSelected" />
+                            <span data-bind="text: role.name"></span>
+                        </label>
+                    </div>
+                </div>
+                <!--/ko-->
+            </fieldset>
+
+            <div class="row">
+                <div class="large-12 columns">
+                    <span class="save-button" data-bind="click: $parent.saveChanges">Save</span>
+                    <span class="cancel-button" data-bind="click: $parent.cancelChanges">Cancel</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

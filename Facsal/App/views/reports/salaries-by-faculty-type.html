@@ -1,0 +1,65 @@
+﻿<div class="row">
+    <div class="large-12 columns">
+        <h2 class="background"><span>SALARIES BY FACULTY TYPE REPORT</span></h2>
+    </div>
+</div>
+
+<div class="row" data-bind="if: departmentData().length > 0">
+    <div class="large-12 columns">
+        <p>
+            <a data-bind="click: downloadExcel">Download Excel version</a>
+        </p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="large-12 columns table-container">
+        <table data-bind="if: departmentData().length > 0">
+            <!-- ko foreach: departmentData -->
+            <tbody class="department-heading">
+                <tr>
+                    <td colspan="6" class="text-center" data-bind="text: department.name"></td>
+                </tr>
+            </tbody>
+
+            <tbody data-bind="if: data.length === 0">
+                <tr>
+                    <td>
+                        No records
+                    </td>
+                </tr>
+            </tbody>
+
+            <tbody class="thead" data-bind="if: data.length > 0">
+                <tr>
+                    <td>
+                        Type
+                    </td>
+                    <td>
+                        Starting salaries
+                    </td>
+                    <td class="hide-for-small-down">
+                        Merit increases
+                    </td>
+                    <td class="hide-for-small-down">
+                        Special increases
+                    </td>
+                    <td>
+                        New salaries
+                    </td>
+                </tr>
+            </tbody>
+
+            <tbody data-bind="foreach: data">
+                <tr>
+                    <td data-bind="text: facultyType[0]"></td>
+                    <td data-bind="text: formattedStartingSalaries"></td>
+                    <td class="hide-for-small-down" data-bind="text: formattedMeritIncreases"></td>
+                    <td class="hide-for-small-down" data-bind="text: formattedSpecialIncreases"></td>
+                    <td data-bind="text: formattedNewSalaries"></td>
+                </tr>
+            </tbody>
+            <!--/ko-->
+        </table>
+    </div>
+</div>

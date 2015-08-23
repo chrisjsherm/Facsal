@@ -1,0 +1,55 @@
+﻿<div class="row">
+    <div class="large-12 columns">
+        <h2 class="background"><span>REPORTING</span></h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="large-4 medium-6 columns end">
+        <label>
+            Report
+        </label>
+        <select data-bind="options: reportTypes, optionsText: 'text', optionsValue: 'route', value: selectedReportType"></select>
+    </div>
+</div>
+
+<div class="row">
+    <div class="large-4 medium-6 columns end">
+        <label>
+            Audience
+        </label>
+        <select data-bind="options: audienceTypes, value: selectedAudienceType"></select>
+    </div>
+</div>
+
+<div class="row" data-bind="if: selectedAudienceType() === 'Unit'">
+    <div class="large-6 medium-6 columns end">
+        <label>
+            Unit
+        </label>
+        <select data-bind="options: units,
+                optionsText: 'name', optionsValue: 'id', optionsCaption: 'Choose...',
+                value: selectedUnitId"></select>
+    </div>
+</div>
+
+<div class="row" data-bind="if: selectedAudienceType() === 'Department'">
+    <div class="large-6 medium-6 columns end">
+        <label for="Unit">
+            Department
+            <select data-bind="value: selectedDepartmentId">
+                <!-- ko foreach: units -->
+                <optgroup data-bind="attr: { label: name }, foreach: departments">
+                    <option data-bind="attr: { label: name, value: unitId() + '/' + id() }, text: name"></option>
+                </optgroup>
+                <!--/ko-->
+            </select>
+        </label>
+    </div>
+</div>
+
+<div class="row">
+    <div class="large-12 columns">
+        <span class="save-button" data-bind="click: generateReport">Generate report</span>
+    </div>
+</div>

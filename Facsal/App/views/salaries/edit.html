@@ -1,0 +1,310 @@
+﻿<div class="row">
+    <div class="large-12 columns">
+        <h2 class="background"><span>EDIT SALARY</span></h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="large-12 columns">
+        <section data-bind="with: salary">
+            <fieldset>
+                <div class="row">
+                    <div class="large-8 medium-6 columns">
+                        <h4 data-bind="text: person().firstName() + ' ' + person().lastName() + ' | ' + person().id()"></h4>
+                    </div>
+
+                    <section data-bind="ifIsInRole: 'manage-all'">
+                        <div class="large-2 large-offset-2 medium-4 medium-offset-2 columns hide-for-small">
+                            <select data-bind="options: $parent.statusTypes,
+                            optionsValue: 'id', optionsText: 'name', optionsCaption: 'Choose...', value: person().statusTypeId"></select>
+                        </div>
+                    </section>
+
+                    <section data-bind="ifNotIsInRole: 'manage-all'">
+                        <div class="large-2 large-offset-2 medium-4 medium-offset-2 columns hide-for-small">
+                            <span class="right" data-bind="text: person().statusType().name()"></span>
+                        </div>
+                    </section>
+                </div>
+
+                <div class="row" data-bind="ifNotIsInRole: 'manage-all'">
+                    <div class="large-4 columns hide-for-small end" data-bind="if: leaveTypeId() > 1">
+                        <p data-bind="text: 'Leave status: ' + leaveType().name()"></p>
+                    </div>
+                </div>
+
+                <div class="row" data-bind="ifIsInRole: 'manage-all'">
+                    <div class="large-4 medium-6 columns hide-for-small">
+                        <label>Leave status</label>
+                        <select data-bind="options: $parent.leaveTypes,
+                            optionsValue: 'id', optionsText: 'name', optionsCaption: 'Choose...', value: leaveTypeId"></select>
+                    </div>
+                </div>
+
+                <div class="row" data-bind="ifNotIsInRole: 'manage-all'">
+                    <div class="large-2 medium-2 small-6 columns">
+                        <label>Starting salary</label>
+                        <p data-bind="text: formattedTotalAmount"></p>
+                    </div>
+
+                    <div class="large-2 medium-2 small-6 columns">
+                        <label>New salary</label>
+                        <p data-bind="text: formattedNewTotalAmount"></p>
+                    </div>
+
+                    <div class="large-2 medium-2 small-6 columns"
+                         data-bind="if: adminAmount() > 0 || eminentAmount() > 0 || promotionAmount() > 0">
+                        <label>Base salary</label>
+                        <p data-bind="text: formattedBaseAmount"></p>
+                    </div>
+
+                    <div class="large-2 medium-2 small-6 columns" data-bind="if: adminAmount() > 0">
+                        <label>Admin salary</label>
+                        <p data-bind="text: formattedAdminAmount"></p>
+                    </div>
+
+                    <div class="large-2 medium-2 small-6 columns" data-bind="if: eminentAmount() > 0">
+                        <label>Eminent salary</label>
+                        <p data-bind="text: formattedEminentAmount"></p>
+                    </div>
+
+                    <div class="large-2 medium-2 small-6 columns" data-bind="if: promotionAmount() > 0">
+                        <label>Promotion amount</label>
+                        <p data-bind="text: formattedPromotionAmount"></p>
+                    </div>
+                </div>
+
+                <div class="row" data-bind="ifIsInRole: 'manage-all'">
+                    <div class="large-2 medium-4 small-6 columns">
+                        <label>Starting salary</label>
+                        <p data-bind="text: formattedTotalAmount"></p>
+                    </div>
+
+                    <div class="large-2 medium-4 small-6 columns">
+                        <label>New salary</label>
+                        <p data-bind="text: formattedNewTotalAmount"></p>
+                    </div>
+
+                    <div class="large-2 medium-4 small-6 columns">
+                        <label>
+                            Base salary
+                            <input type="text" data-bind="value: formattedBaseAmount" />
+                        </label>
+                    </div>
+
+                    <div class="large-2 medium-4 small-6 columns">
+                        <label>
+                            Admin salary
+                            <input type="text" data-bind="value: formattedAdminAmount" />
+                        </label>
+                    </div>
+
+                    <div class="large-2 medium-4 small-6 columns">
+                        <label>
+                            Eminent salary
+                            <input type="text" data-bind="value: formattedEminentAmount" />
+                        </label>
+                    </div>
+
+                    <div class="large-2  medium-4 small-6 columns">
+                        <label>
+                            Promotion amount
+                            <input type="text" data-bind="value: formattedPromotionAmount" />
+                        </label>
+                    </div>
+                </div>
+
+                <div class="row hide-on-print">
+                    <div class="large-4 medium-6 columns">
+                        <label>
+                            Classification
+                        </label>
+                        <select data-bind="options: $parent.facultyTypes,
+                        optionsValue: 'id', optionsText: 'name', optionsCaption: 'Choose...', value: facultyTypeId"></select>
+                    </div>
+
+                    <div class="large-4 medium-6 columns">
+                        <label>
+                            Rank
+                        </label>
+                        <select data-bind="options: $parent.rankTypes,
+                        optionsValue: 'id', optionsText: 'name', optionsCaption: 'Choose...', value: rankTypeId"></select>
+                    </div>
+
+                    <div class="large-4 medium-6 columns">
+                        <label>
+                            Appointment
+                        </label>
+                        <select data-bind="options: $parent.appointmentTypes,
+                        optionsValue: 'id', optionsText: 'name', optionsCaption: 'Choose...', value: appointmentTypeId"></select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="large-8 medium-6 columns">
+                        <label class="hide-on-print">
+                            Title
+                            <input name="Title" type="text" class="hide-on-print" data-bind="value: title" />
+                        </label>
+                        <p class="print-only">
+                            <span class="text-underline">Title</span>: <span data-bind="text: title"></span>
+                        </p>
+                    </div>
+
+                    <div class="large-3 medium-4 small-6 columns end">
+                        <label class="hide-on-print">
+                            Full-time equivalent<span class="required">*</span>
+                            <input type="text" class="hide-on-print" data-bind="value: fullTimeEquivalent" />
+                        </label>
+                        <p class="print-only">
+                            <span class="text-underline">FTE</span>: <span data-bind="text: fullTimeEquivalent"></span>
+                        </p>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <div class="row">
+                    <div class="large-8 small-6 columns">
+                        <h4>Funding</h4>
+                    </div>
+
+                    <div class="large-4 small-6 columns">
+                        <p class="right" data-bind="ifIsInRole: 'manage-all'">
+                            <a data-bind="attr: { href: 'employments/edit/' + person().id() }">Edit</a>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="large-12 columns">
+                        <ul data-bind="foreach: $parent.employments">
+                            <li data-bind="text: department().name"></li>
+                        </ul>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <h4 data-magellan-destination="merit">Merit adjustment</h4>
+
+                <div class="row">
+                    <div class="large-4 small-6 columns">
+                        <label class="hide-on-print">
+                            Amount<span class="required">*</span>
+                            <input type="text" class="hide-on-print"
+                                   data-bind="value: formattedMeritIncrease" />
+                        </label>
+                        <p class="print-only">
+                            <span class="text-underline">Amount</span>: <span data-bind="text: formattedMeritIncrease"></span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="large-1 medium-1 small-3 columns">
+                        <label>Change</label>
+                        <span data-bind="text: meritPercentIncrease() + '%'"></span>
+                    </div>
+                    <div class="large-6 medium-6 small-9 end columns">
+                        <div class="edit-salary-slider" style="margin: 10px" data-bind="currencySlider: meritPercentIncrease, sliderOptions: {min: 0, max: 15, range: 'min', step: 0.1}, currencyObservable: formattedMeritIncrease, totalObservable: totalAmount"></div>
+                    </div>
+                </div>
+
+                <div class="row hide-on-print">
+                    <div class="large-4 medium-8 columns end">
+                        <label>
+                            Adjustment reason
+                            <span class="required">*</span>
+                        </label>
+                        <select data-bind="options: $parent.meritAdjustmentTypes,
+                        optionsValue: 'id', optionsText: 'name', optionsCaption: 'Choose...', value: meritAdjustmentTypeId"></select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="large-12 columns">
+                        <label class="hide-on-print">
+                            Brief description of the adjustment
+                            <span class="required" data-bind="visible: isMeritAdjustmentNoteRequired">*</span>
+                            <textarea class="hide-on-print"
+                                      data-bind="value: meritAdjustmentNote"></textarea>
+                        </label>
+                        <p class="print-only">
+                            <span class="text-underline">Brief description of the merit adjustment</span>
+                        </p>
+                        <p class="print-only" data-bind="text: meritAdjustmentNote"></p>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset data-bind="visible: facultyTypeId() !== 2">
+                <h4>Special adjustment</h4>
+
+                <div class="row">
+                    <div class="large-4 small-6 columns">
+                        <label class="hide-on-print">
+                            Amount<span class="required">*</span>
+                            <input type="text" class="hide-on-print"
+                                   data-bind="value: formattedSpecialIncrease" />
+                        </label>
+                        <p class="print-only">
+                            <span class="text-underline">Amount</span>: <span data-bind="text: formattedSpecialIncrease"></span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="large-1 medium-1 small-3 columns">
+                        <label>Change</label>
+                        <span data-bind="text: specialPercentIncrease() + '%'"></span>
+                    </div>
+                    <div class="large-6 medium-6 small-9 end columns">
+                        <div class="edit-salary-slider" style="margin: 10px" data-bind="currencySlider: specialPercentIncrease,
+                            sliderOptions: {min: 0, max: 15, range: 'min', step: 0.1},
+                            currencyObservable: formattedSpecialIncrease, totalObservable: totalAmount"></div>
+                    </div>
+                </div>
+
+                <div class="row hide-on-print">
+                    <div class="large-4 columns end">
+                        <h5>
+                            Adjustments
+                            <span class="required" data-bind="visible: isSpecialAdjustmentNoteRequired">*</span>
+                        </h5>
+                        <!-- ko foreach: $parent.adjustmentVMs -->
+                        <div>
+                            <label>
+                                <input type="checkbox" data-bind="checkedValue: adjustment, checked: isSelected" /> <span data-bind="text: adjustment.name"></span>
+                            </label>
+                        </div>
+                        <!--/ko-->
+                        <span class="error" data-bind="validationMessage: specialSalaryAdjustments"></span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="large-12 columns">
+                        <label class="hide-on-print">
+                            Brief description of the adjustment
+                            <span class="required" data-bind="visible: isSpecialAdjustmentNoteRequired">*</span>
+                            <textarea class="hide-on-print"
+                                      data-bind="value: specialAdjustmentNote"></textarea>
+                        </label>
+                        <p class="print-only">
+                            <span class="text-underline">Brief description of the special adjustment</span>
+                        </p>
+                        <p class="print-only" data-bind="text: specialAdjustmentNote"></p>
+                    </div>
+                </div>
+            </fieldset>
+
+            <div class="row">
+                <div class="large-12 columns">
+                    <span class="save-button" data-bind="click: $parent.saveChanges">Save</span>
+                    <span class="cancel-button" data-bind="click: $parent.cancelChanges">Cancel</span>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

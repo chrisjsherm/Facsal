@@ -1,0 +1,54 @@
+﻿<div class="row">
+    <div class="large-12 columns">
+        <h2 class="background"><span>DEPARTMENTS</span></h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="large-12 columns">
+        <p>
+            <a href="/departments/create">Create</a>
+        </p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="large-6 medium-6 columns">
+        <label>
+            Department
+        </label>
+        <select data-bind="value: selectedDepartmentId">
+            <!-- ko foreach: units -->
+            <optgroup data-bind="attr: { label: name }, foreach: departments">
+                <option data-bind="attr: { label: name, value: id }, text: name"></option>
+            </optgroup>
+            <!--/ko-->
+        </select>
+    </div>
+</div>
+
+<div class="row" data-bind="with: selectedDepartment">
+    <div class="large-4 columns">
+        <section class="department-name-editor">
+            <label for="Name">
+                Name<span class="required">*</span>
+            </label>
+
+            <input type="text" data-bind="value: name" />
+
+            <em>Number of employees: </em>
+            <span data-bind="text: $parent.employeeCount()"></span>
+
+            <p data-bind="if: $parent.employeeCount() === 0">
+                <a data-bind="click: $parent.deleteDepartment">Delete selected department</a>
+            </p>
+        </section>
+    </div>
+</div>
+
+<div class="row" data-bind="if: selectedDepartmentId">
+    <div class="large-12 columns">
+        <span class="save-button" data-bind="click: saveChanges">Save</span>
+        <span class="cancel-button" data-bind="click: cancelChanges">Cancel</span>
+    </div>
+</div>

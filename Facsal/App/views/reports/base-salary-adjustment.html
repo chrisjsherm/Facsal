@@ -1,0 +1,63 @@
+﻿<div class="row">
+    <div class="large-12 columns">
+        <h2 class="background"><span>BASE SALARY ADJUSTMENT REPORT</span></h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="large-12 columns table-container">
+        <table data-bind="if: departmentData().length > 0">
+            <!-- ko foreach: departmentData -->
+            <tbody class="department-heading">
+                <tr>
+                    <td colspan="7" class="text-center" data-bind="text: department.name"></td>
+                </tr>
+            </tbody>
+
+            <tbody class="thead" data-bind="if: adjustments.length > 0">
+                <tr>
+                    <td>
+                        Name
+                    </td>
+                    <td class="hide-for-small-down">
+                        Rank
+                    </td>
+                    <td class="hide-for-small-down">
+                        Appointment
+                    </td>
+                    <td class="hide-for-small-down">
+                        FTE
+                    </td>
+                    <td>
+                        Starting Base
+                    </td>
+                    <td>
+                        New Base
+                    </td>
+                </tr>
+            </tbody>
+
+            <tbody data-bind="if: adjustments.length === 0">
+                <tr>
+                    <td>
+                        No records
+                    </td>
+                </tr>
+            </tbody>
+
+            <tbody data-bind="foreach: adjustments">
+                <tr>
+                    <td>
+                        <a data-bind="attr: { href: 'salaries/edit/' + id() }, text: person().firstName() + ' ' + person().lastName()"></a>
+                    </td>
+                    <td class="hide-for-small-down" data-bind="text: rankType().name"></td>
+                    <td class="hide-for-small-down" data-bind="text: appointmentType().name"></td>
+                    <td class="hide-for-small-down" data-bind="text: fullTimeEquivalent"></td>
+                    <td data-bind="text: formattedBannerBaseAmount"></td>
+                    <td data-bind="text: formattedBaseAmount"></td>
+                </tr>
+            </tbody>
+            <!--/ko-->
+        </table>
+    </div>
+</div>

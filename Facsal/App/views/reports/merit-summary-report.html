@@ -1,0 +1,68 @@
+﻿<div class="row">
+    <div class="large-12 columns">
+        <h2 class="background"><span>Merit Summary Report</span></h2>
+    </div>
+</div>
+
+<div class="row" data-bind="if: summaryMerit().length > 0">
+    <div class="large-12 columns">
+        <p>
+            <a data-bind="click: downloadExcel">Download Excel version</a>
+        </p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="large-12 columns table-container">
+        <table data-bind="if: summaryMerit().length > 0">
+            <!-- ko foreach: summaryMerit -->
+            <tbody class="department-heading">
+                <tr>
+                    <td colspan="6" class="text-center" data-bind="text: department"></td>
+                </tr>
+            </tbody>
+
+            <tbody class="thead">
+                <tr class="results">
+                    <td class="text-center">
+                        Highest  increase
+                    </td>
+                    <td class="text-center">
+                        Highest  percentage
+                    </td>
+                    <td class="text-center">
+                        Median  increase
+                    </td>
+                    <td class="text-center">
+                        Mean increase
+                    </td>
+                    <td class="text-center">
+                        Lowest increase
+                    </td>
+                    <td class="text-center">
+                        Lowest percentage
+                    </td>
+                </tr>
+            </tbody>
+
+            <tbody>
+                <tr class="results">
+                    <td class="text-center"
+                        data-bind="text: highestMerit.formattedMeritIncrease"></td>
+                    <td class="text-center"
+                        data-bind="text: highestMerit.formattedPercentIncrease"></td>
+                    <td class="text-center"
+                        data-bind="text: medianMerit"></td>
+                    <td class="text-center"
+                        data-bind="text: meanMerit"></td>
+                    <td class="text-center"
+                        data-bind="text: lowestMerit.formattedMeritIncrease"></td>
+                    <td class="text-center"
+                        data-bind="text: lowestMerit.formattedPercentIncrease"></td>
+
+                </tr>
+            </tbody>
+            <!--/ko-->
+        </table>
+    </div>
+</div>

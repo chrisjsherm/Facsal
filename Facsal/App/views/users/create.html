@@ -1,0 +1,66 @@
+﻿<div class="row">
+    <div class="large-12 columns">
+        <h2 class="background"><span>NEW USER</span></h2>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="large-12 columns">
+        <section data-bind="with: user">
+            <fieldset>
+                <h4>User information</h4>
+
+                <div class="row">
+                    <div class="large-5 medium-7 columns end">
+                        <label>
+                            Pid
+                            <input type="text" data-bind="value: pid" />
+                        </label>
+                    </div>
+                </div>
+            </fieldset>
+
+
+
+            <fieldset>
+                <h4>Departmental roles</h4>
+
+                <div class="row">
+                    <div class="large-6 medium-8 columns end">
+                        <label for="Unit">
+                            Department
+                        </label>
+                        <select data-bind="value: $parent.selectedDepartmentId">
+                            <!-- ko foreach: $parent.units -->
+                            <optgroup data-bind="attr: { label: name }, foreach: departments">
+                                <option data-bind="attr: { label: name, value: id }, text: name"></option>
+                            </optgroup>
+                            <!--/ko-->
+                        </select>
+                    </div>
+                </div>
+
+                <!-- ko foreach: $parent.assignmentVMRows -->
+                    <div class="row" data-bind="foreach: $data">
+                        <div class="large-3 columns">
+                            <label>
+                                <input type="checkbox" data-bind="checkedValue: role, checked: isSelected" />
+                                <span data-bind="text: role.name"></span>
+                            </label>
+                        </div>
+                    </div>
+                <!--/ko-->
+            </fieldset>
+
+            <div class="row">
+                <div class="large-12 columns">
+                    <span class="save-button" data-bind="click: $parent.saveUser">Save</span>
+                    <span class="cancel-button" data-bind="click: $parent.cancelUser">Cancel</span>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+

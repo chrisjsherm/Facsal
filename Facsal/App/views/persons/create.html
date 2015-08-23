@@ -1,0 +1,184 @@
+﻿<div class="row">
+    <div class="large-12 columns">
+        <h2 class="background"><span>NEW EMPLOYEE</span></h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="large-12 columns">
+        <section data-bind="with: person">
+            <fieldset>
+                <h4>Employee information</h4>
+
+                <div class="row">
+                    <div class="large-5 medium-5 columns">
+                        <label>
+                            Id <input type="text" data-bind="value: id" />
+                        </label>
+                    </div>
+
+                    <div class="large-4 large-offset-3 medium-4 medium-offset-3 columns">
+                        <label>
+                            Status <select data-bind="options: $parent.statusTypes,
+                            optionsValue: 'id', optionsText: 'name', value: statusTypeId"></select>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="large-4 medium-4 columns">
+                        <label>
+                            Pid <input type="text" data-bind="value: pid" />
+                        </label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="large-4 medium-4 columns">
+                        <label>
+                            First name <input type="text" data-bind="value: firstName" />
+                        </label>
+                    </div>
+
+                    <div class="large-4 large-pull-4 medium-4 medium-pull-4 columns">
+                        <label>
+                            Last name <input type="text" data-bind="value: lastName" />
+                        </label>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <h4>Employment</h4>
+
+                <div class="row">
+                    <div class="large-6 medium-6 columns">
+                        <label>
+                            Home department
+                        </label>
+                        <select data-bind="value: homeDepartmentId">
+                            <option selected="selected">Select a department...</option>
+                            <!-- ko foreach: $parent.units -->
+                            <optgroup data-bind="attr: { label: name }, foreach: departments">
+                                <option data-bind="attr: { label: name, value: id }, text: name"></option>
+                            </optgroup>
+                            <!--/ko-->
+                        </select>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset data-bind="foreach: salaries">
+                <h4>Salary information</h4>
+
+                <div class="row">
+                    <div class="large-4 medium-4 columns">
+                        <p>
+                            <label>
+                                Cycle year: <span data-bind="text: cycleYear"></span>
+                            </label>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="large-4 medium-4 columns">
+                        <label>Leave status</label>
+                        <select data-bind="options: $parents[1].leaveTypes,
+                            optionsValue: 'id', optionsText: 'name', value: leaveTypeId"></select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="large-4 medium-4 columns">
+                        <label for="FacultyType">
+                            Classification
+                        </label>
+                        <select name="FacultyType" data-bind="options: $parents[1].facultyTypes,
+                        optionsValue: 'id', optionsText: 'name', value: facultyTypeId"></select>
+                    </div>
+
+                    <div class="large-4 medium-6 columns">
+                        <label for="RankType">
+                            Rank
+                        </label>
+                        <select name="RankType" data-bind="options: $parents[1].rankTypes,
+                        optionsValue: 'id', optionsText: 'name', value: rankTypeId"></select>
+                    </div>
+
+                    <div class="large-4 medium-6 columns">
+                        <label for="AppointmentType">
+                            Appointment
+                        </label>
+                        <select name="AppointmentType" data-bind="options: $parents[1].appointmentTypes,
+                        optionsValue: 'id', optionsText: 'name', value: appointmentTypeId"></select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="large-8 medium-6 columns end">
+                        <label for="Title" class="hide-on-print">
+                            Title
+                        </label>
+                        <input name="Title" type="text" class="hide-on-print" data-bind="value: title" />
+                        <p class="print-only">
+                            <span class="text-underline">Title</span>: <span data-bind="text: title"></span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="large-4 medium-4 columns end">
+                        <label for="FTE" class="hide-on-print">
+                            FTE<span class="required">*</span>
+                        </label>
+                        <input name="FTE" type="text" class="hide-on-print" data-bind="value: fullTimeEquivalent" />
+                        <p class="print-only">
+                            <span class="text-underline">FTE</span>: <span data-bind="text: fullTimeEquivalent"></span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="large-4 medium-4 columns end">
+                        <label>
+                            Base amount <input type="text" data-bind="value: formattedBaseAmount" />
+                        </label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="large-4 medium-4 columns end">
+                        <label>
+                            Administrative amount <input type="text" data-bind="value: formattedAdminAmount" />
+                        </label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="large-4 medium-4 columns end">
+                        <label>
+                            Eminent amount <input type="text" data-bind="value: formattedEminentAmount" />
+                        </label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="large-4 medium-4 columns end">
+                        <label>
+                            Promotion amount <input type="text" data-bind="value: formattedPromotionAmount" />
+                        </label>
+                    </div>
+                </div>
+            </fieldset>
+
+            <div class="row">
+                <div class="large-12 columns">
+                    <span class="save-button" data-bind="click: $parent.savePerson">Save</span>
+                    <span class="cancel-button" data-bind="click: $parent.cancelPerson">Cancel</span>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+

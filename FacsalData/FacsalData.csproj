@@ -1,0 +1,194 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{709FDB03-673E-4E05-A66C-F8941FCC8814}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FacsalData</RootNamespace>
+    <AssemblyName>FacsalData</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Breeze.ContextProvider, Version=1.5.0.0, Culture=neutral, PublicKeyToken=f6085f1a45e2ac59, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Breeze.Server.ContextProvider.1.5.4\lib\Breeze.ContextProvider.dll</HintPath>
+    </Reference>
+    <Reference Include="Breeze.ContextProvider.EF6, Version=1.5.0.0, Culture=neutral, PublicKeyToken=f6085f1a45e2ac59, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Breeze.Server.ContextProvider.EF6.1.5.4\lib\Breeze.ContextProvider.EF6.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="FacsalDbContext.cs" />
+    <Compile Include="Migrations\201406291854010_Initial.cs" />
+    <Compile Include="Migrations\201406291854010_Initial.Designer.cs">
+      <DependentUpon>201406291854010_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201406301352499_NonNullableSalaryMeritAdjustmentId.cs" />
+    <Compile Include="Migrations\201406301352499_NonNullableSalaryMeritAdjustmentId.Designer.cs">
+      <DependentUpon>201406301352499_NonNullableSalaryMeritAdjustmentId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201406301409462_Indexes.cs" />
+    <Compile Include="Migrations\201406301409462_Indexes.Designer.cs">
+      <DependentUpon>201406301409462_Indexes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201406302025536_RoleRef.cs" />
+    <Compile Include="Migrations\201406302025536_RoleRef.Designer.cs">
+      <DependentUpon>201406302025536_RoleRef.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201407012044224_RoleAndUserRAIndex.cs" />
+    <Compile Include="Migrations\201407012044224_RoleAndUserRAIndex.Designer.cs">
+      <DependentUpon>201407012044224_RoleAndUserRAIndex.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201407162046418_RemoveUnitFromRole.cs" />
+    <Compile Include="Migrations\201407162046418_RemoveUnitFromRole.Designer.cs">
+      <DependentUpon>201407162046418_RemoveUnitFromRole.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201407241850071_IsHomeDept.cs" />
+    <Compile Include="Migrations\201407241850071_IsHomeDept.Designer.cs">
+      <DependentUpon>201407241850071_IsHomeDept.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201407241924179_DropHomeDeptId.cs" />
+    <Compile Include="Migrations\201407241924179_DropHomeDeptId.Designer.cs">
+      <DependentUpon>201407241924179_DropHomeDeptId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201408051320250_PersonDepartmentEmploymentIndex.cs" />
+    <Compile Include="Migrations\201408051320250_PersonDepartmentEmploymentIndex.Designer.cs">
+      <DependentUpon>201408051320250_PersonDepartmentEmploymentIndex.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411061639228_HomeDepartment.cs" />
+    <Compile Include="Migrations\201411061639228_HomeDepartment.Designer.cs">
+      <DependentUpon>201411061639228_HomeDepartment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411111901012_RemoveIsHomeDepartmentFromEmp.cs" />
+    <Compile Include="Migrations\201411111901012_RemoveIsHomeDepartmentFromEmp.Designer.cs">
+      <DependentUpon>201411111901012_RemoveIsHomeDepartmentFromEmp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411111913112_RequireHomeDeptOnPerson.cs" />
+    <Compile Include="Migrations\201411111913112_RequireHomeDeptOnPerson.Designer.cs">
+      <DependentUpon>201411111913112_RequireHomeDeptOnPerson.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201504221955114_CreatedByLength.cs" />
+    <Compile Include="Migrations\201504221955114_CreatedByLength.Designer.cs">
+      <DependentUpon>201504221955114_CreatedByLength.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\Repository.cs" />
+    <Compile Include="UnitOfWork\UnitOfWork.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ChrisJSherm\ChrisJSherm.csproj">
+      <Project>{9e339bc2-acf8-4fa9-82dc-fdacf7dbdc05}</Project>
+      <Name>ChrisJSherm</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SalaryEntities\SalaryEntities.csproj">
+      <Project>{f3097e14-1c98-43d5-98f3-a14ccc4676dc}</Project>
+      <Name>SalaryEntities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201406291854010_Initial.resx">
+      <DependentUpon>201406291854010_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201406301352499_NonNullableSalaryMeritAdjustmentId.resx">
+      <DependentUpon>201406301352499_NonNullableSalaryMeritAdjustmentId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201406301409462_Indexes.resx">
+      <DependentUpon>201406301409462_Indexes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201406302025536_RoleRef.resx">
+      <DependentUpon>201406302025536_RoleRef.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201407012044224_RoleAndUserRAIndex.resx">
+      <DependentUpon>201407012044224_RoleAndUserRAIndex.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201407162046418_RemoveUnitFromRole.resx">
+      <DependentUpon>201407162046418_RemoveUnitFromRole.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201407241850071_IsHomeDept.resx">
+      <DependentUpon>201407241850071_IsHomeDept.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201407241924179_DropHomeDeptId.resx">
+      <DependentUpon>201407241924179_DropHomeDeptId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201408051320250_PersonDepartmentEmploymentIndex.resx">
+      <DependentUpon>201408051320250_PersonDepartmentEmploymentIndex.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411061639228_HomeDepartment.resx">
+      <DependentUpon>201411061639228_HomeDepartment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411111901012_RemoveIsHomeDepartmentFromEmp.resx">
+      <DependentUpon>201411111901012_RemoveIsHomeDepartmentFromEmp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411111913112_RequireHomeDeptOnPerson.resx">
+      <DependentUpon>201411111913112_RequireHomeDeptOnPerson.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504221955114_CreatedByLength.resx">
+      <DependentUpon>201504221955114_CreatedByLength.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

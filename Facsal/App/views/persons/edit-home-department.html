@@ -1,0 +1,37 @@
+﻿<div class="row">
+    <div class="large-12 columns">
+        <h2 class="background"><span>EDIT HOME DEPARTMENT</span></h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="large-12 columns">
+        <section>
+            <fieldset>
+                <h4>
+                    Home department
+                </h4>
+
+                <div class="row">
+                    <div class="large-6 medium-6 columns">
+                        <select data-bind="value: person().homeDepartmentId">
+                            <!-- ko foreach: units -->
+                            <optgroup data-bind="attr: { label: name }, foreach: departments">
+                                <option data-bind="attr: { label: name, value: id }, text: name"></option>
+                            </optgroup>
+                            <!--/ko-->
+                        </select>
+                    </div>
+                </div>
+            </fieldset>
+
+            <div class="row">
+                <div class="large-12 columns">
+                    <span class="save-button" data-bind="click: saveChanges">Save</span>
+                    <span class="cancel-button" data-bind="click: cancelChanges">Cancel</span>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+

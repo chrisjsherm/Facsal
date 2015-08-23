@@ -1,0 +1,39 @@
+﻿<div class="row">
+    <div class="large-12 columns">
+        <h2 class="background"><span>USER ROLES REPORT</span></h2>
+    </div>
+</div>
+
+<div class="row" data-bind="if: departmentData().length > 0">
+    <div class="large-12 columns table-container">
+        <table data-bind="foreach: departmentData">
+            <tbody class="department-heading">
+                <tr>
+                    <td colspan="10" class="text-center" data-bind="text: department.name"></td>
+                </tr>
+            </tbody>
+            <!-- ko foreach: roles -->
+            <tbody class="thead">
+                <tr>
+                    <td data-bind="text: name">
+                    </td>
+                </tr>
+            </tbody>
+            <tbody data-bind="if: roleAssignments().length === 0">
+                <tr>
+                    <td>
+                        No records
+                    </td>
+                </tr>
+            </tbody>
+            <tbody data-bind="foreach: roleAssignments">
+                <tr>
+                    <td>
+                        <a data-bind="attr: { href: '/users/edit/' + user().id() + '?departmentid=' + $parent.departmentId() }, text: user().pid"></a>
+                    </td>
+                </tr>
+            </tbody>
+            <!--/ko-->
+        </table>
+    </div>
+</div>

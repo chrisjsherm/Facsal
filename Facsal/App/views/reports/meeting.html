@@ -1,0 +1,116 @@
+﻿<div class="row">
+    <div class="large-12 columns">
+        <h2 class="background"><span>MEETING REPORT</span></h2>
+    </div>
+</div>
+<div class="row" data-bind="if: departmentData().length > 0">
+    <div class="large-12 columns">
+        <p>
+            <a data-bind="click: downloadExcel">Download Excel version</a>
+        </p>
+
+        <p data-bind="ifIsInRole: 'manage-all'">
+            <label><input type="checkbox" data-bind="checked: isExecutiveExcel" /> Include executive Excel columns</label>
+        </p>
+    </div>
+</div>
+
+<div class="row" data-bind="if: departmentData().length > 0">
+    <div class="large-12 columns table-container">
+        <table>
+            <!-- ko foreach: departmentData -->
+            <tbody class="department-heading">
+                <tr>
+                    <td colspan="10" class="text-center" data-bind="text: department.name"></td>
+                </tr>
+            </tbody>
+            <tbody class="thead" data-bind="if: salaries.length > 0">
+                <tr>
+                    <td>
+                        Name
+                    </td>
+                    <td class="hide-for-small-down">
+                        Rank
+                    </td>
+                    <td class="hide-for-small-down">
+                        Appointment
+                    </td>
+                    <td class="hide-for-small-down">
+                        FTE
+                    </td>
+                    <td class="hide-for-small-down">
+                        Salary
+                    </td>
+                    <td class="hide-for-small-down">
+                        Merit
+                    </td>
+                    <td class="hide-for-small-down">
+                        Special
+                    </td>
+                    <td>
+                        Total
+                    </td>
+                    <td>
+                        Change
+                    </td>
+                    <td class="hide-for-small-down text-center">
+                        Comments
+                    </td>
+                </tr>
+            </tbody>
+            <tbody data-bind="if: salaries.length === 0">
+                <tr>
+                    <td>
+                        No records
+                    </td>
+                </tr>
+            </tbody>
+            <tbody data-bind="foreach: salaries">
+                <tr>
+                    <td>
+                        <a data-bind="attr: { href: 'salaries/edit/' + id() }, text: person().firstName() + ' ' + person().lastName()"></a>
+                    </td>
+                    <td class="small-2 hide-for-small-down" data-bind="text: rankType().name"></td>
+                    <td class="hide-for-small-down" data-bind="text: appointmentType().name"></td>
+                    <td class="hide-for-small-down" data-bind="text: fullTimeEquivalent"></td>
+                    <td class="hide-for-small-down" data-bind="text: formattedTotalAmount"></td>
+                    <td class="hide-for-small-down" data-bind="text: formattedMeritIncrease"></td>
+                    <td class="hide-for-small-down" data-bind="text: formattedSpecialIncrease"></td>
+                    <td data-bind="text: formattedNewTotalAmount"></td>
+                    <td data-bind="text: formattedPercentIncrease"></td>
+                    <td class="hide-for-small-down text-center"><a data-bind="click: $root.showComments">View</a></td>
+                </tr>
+            </tbody>
+            <!--/ko-->
+        </table>
+
+        <div id="Comments" class="small reveal-modal" data-reveal>
+
+            <!-- ko ifnot: meritAdjustmentNoteComment -->
+            <!-- ko ifnot: specialAdjustmentNoteComment -->
+            <h2 class="title-comments">No Comments</h2>
+            <!--/ko-->
+            <!--/ko-->
+            <!-- ko if: (( meritAdjustmentNoteComment ) ||( specialAdjustmentNoteComment )) -->
+            <h2 class="title-comments">Comments</h2>
+            <!--/ko-->
+            <!-- ko if: meritAdjustmentNoteComment -->
+            <p class="category">Merit Adjustment</p>
+            <p class="category-content" data-bind="text : meritAdjustmentTypeComment"></p>
+            <p class="category">Merit Adjustment Comments</p>
+            <p class="category-content" data-bind="text : meritAdjustmentNoteComment"></p>
+            <!--/ko-->
+            <!-- ko if: specialAdjustmentNoteComment -->
+            <p class="category">Special Adjustment:</p>
+            <!-- ko foreach: specialAdjustmentTypesComment -->
+            <p class="category-content">&#149; <span data-bind="text : specialAdjustmentType().name"></span></p>
+            <!--/ko-->
+            <p class="category">Special Adjustment Comments</p>
+            <p class="category-content" data-bind="text : specialAdjustmentNoteComment"></p>
+            <!--/ko-->
+
+            <a class="close-reveal-modal">&#215;</a>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,57 @@
+﻿<div class="row">
+    <div class="large-12 columns">
+        <h2 class="background"><span>USERS</span></h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="large-12 columns">
+        <p>
+            <a href="/users/create">Create</a>
+        </p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="large-6 medium-8 columns end">
+        <label for="Unit">
+            Department
+        </label>
+        <select data-bind="value: selectedDepartmentId">
+            <!-- ko foreach: units -->
+            <optgroup data-bind="attr: { label: name }, foreach: departments">
+                <option data-bind="attr: { label: name, value: id }, text: name"></option>
+            </optgroup>
+            <!--/ko-->
+        </select>
+    </div>
+</div>
+
+<div class="row" data-bind="if: users().length > 0">
+    <div class="large-12 columns table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        PID
+                    </th>
+                    <th>
+                        Created
+                    </th>
+                    <th>
+                        Creator
+                    </th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: users">
+                <tr>
+                    <td>
+                        <a data-bind="attr: { href: 'users/edit/' + id + '?departmentid=' + $parent.selectedDepartmentId() }, text: pid"></a>
+                    </td>
+                    <td data-bind="text: formattedCreatedDate"></td>
+                    <td data-bind="text: createdBy"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

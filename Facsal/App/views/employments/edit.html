@@ -1,0 +1,41 @@
+﻿<div class="row">
+    <div class="large-12 columns">
+        <h2 class="background"><span>EDIT EMPLOYMENTS</span></h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="large-12 columns">
+        <p>
+            <a data-bind="attr: { href: '/persons/edit-home-department/' + personId() }">Edit home department</a>
+        </p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="large-12 columns" data-bind="foreach: employmentVMs">
+        <fieldset>
+            <h4 data-bind="text: unit.name"></h4>
+
+            <!-- ko foreach: departmentRows -->
+            <div class="row" data-bind="foreach: $data">
+                <div class="large-4 columns">
+                    <label>
+                        <input type="checkbox" data-bind="checkedValue: department.id, checked: isSelected" />
+                        <span data-bind="text: department.name"></span>
+                    </label>
+                </div>
+            </div>
+            <!--/ko-->
+        </fieldset>
+    </div>
+</div>
+
+<section data-bind="with: employmentVMs">
+    <div class="row">
+        <div class="large-12 columns">
+            <span class="save-button" data-bind="click: $parent.saveChanges">Save</span>
+            <span class="cancel-button" data-bind="click: $parent.cancelChanges">Cancel</span>
+        </div>
+    </div>
+</section>
